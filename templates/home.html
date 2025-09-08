@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Event Booking{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h1>Welcome to the Event Booking System</h1>
+    {% if session.get("username") %}
+    <p>Hello, <strong>{{ session["username"] }}</strong> 👋</p>
+    {% else %}
+    <p>Please <a href="{{ url_for('login') }}">login</a> or <a href="{{ url_for('register') }}">register</a> to
+        continue.</p>
+    {% endif %}
+</div>
+{% endblock %}

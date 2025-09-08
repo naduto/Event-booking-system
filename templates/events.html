@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Events{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mb-4">Available Events</h2>
+    {% if events %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Location</th>
+                <th>Capacity</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in events %}
+            <tr>
+                <td>{{ event[1] }}</td>
+                <td>{{ event[2] }}</td>
+                <td>{{ event[3] }}</td>
+                <td>{{ event[4] }}</td>
+                <td>{{ event[5] }}</td>
+                <td>
+                    {% if session.get("user_id") %}
+                    <!-- Book button -->
+                    <a href="{{ url_for('book_event', event_id=event[0]) }}" class="btn btn-primary btn-sm">Book</a>
+
+                    <!-- Delete button for organizers -->
+                    {% if session.get("role") == "organizer" %}
+                    <form action="{{ url_for('delete_event', event_id=event[0]) }}" method="POST"
+                        style="display:inline;">
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                    {% endif %}
+                    {% else %}
+                    <a href="{{ url_for('login') }}" class="btn btn-secondary btn-sm">Login to Book</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No events available yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mb-4">My Profile</h2>
+
+    <!-- User Info -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Hello, {{ user['username'] }} 👋</h5>
+            <p class="card-text"><strong>Role:</strong> {{ user['role'] }}</p>
+            <a href="{{ url_for('edit_profile') }}" class="btn btn-warning">Edit Profile</a>
+        </div>
+    </div>
+
+    <!-- Bookings -->
+    <h3 class="mb-3">My Bookings</h3>
+    <ul class="list-group">
+        {% for booking in bookings %}
+        <li class="list-group-item">
+            <strong>{{ booking[0] }}</strong><br>
+            📍 {{ booking[1] }} <br>
+            🗓️ {{ booking[2] }}
+        </li>
+        {% else %}
+        <li class="list-group-item">No bookings yet.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
