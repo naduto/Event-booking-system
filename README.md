@@ -43,7 +43,7 @@ Follow these steps to set up and run the project locally:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/event-booking-system.git
+   git clone https://github.com/naduto/event-booking-system.git
    cd event-booking-system
 
 2. **Create a virtual environment (recommended)**
