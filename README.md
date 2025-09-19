@@ -16,6 +16,7 @@ A simple Flask-based Event Booking System that allows users to register, log in,
 - Database: SQLite3
 
 ## 📂 Project Structure
+```
 event-booking-system/
 │── app.py # Main Flask application
 │── database.py # Database setup and helper functions
@@ -37,7 +38,7 @@ event-booking-system/
 │ └── logo.png
 │
 └── booking.db # Database storage
-
+```
 ## ⚙️ Installation & Setup
 Follow these steps to set up and run the project locally:
 
