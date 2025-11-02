@@ -17,7 +17,7 @@ def init_db():
         password TEXT NOT NULL,
         role TEXT DEFAULT 'attendee'
     )''')
-    cursor.execute('''Drop TABLE IF EXISTS events''')
+    
     # Events
     cursor.execute('''CREATE TABLE IF NOT EXISTS events (
         id INTEGER PRIMARY KEY AUTOINCREMENT,

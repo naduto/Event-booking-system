@@ -1,6 +1,4 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
-from flask_bcrypt import Bcrypt
-from flask_login import LoginManager, login_user, login_required, logout_user, UserMixin, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from database import init_db, get_db
 import sqlite3
@@ -137,7 +135,7 @@ def edit_profile():
 
     if request.method == "POST":
         new_username = request.form["username"]
-        new_password = request.form["password"]
+        new_password = generate_password_hash(request.form["password"])
 
         if new_username:
             conn.execute("UPDATE users SET username = ? WHERE id = ?", (new_username, user["id"]))
